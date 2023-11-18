@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>Document</title>
 </head>
 <body>
     <div id="app">
-        <h1>Things to do today:</h1>
-        <ul>
-            <li v-for="task in toDoTasks" :key="task">{{ task }} <input type="checkbox" @click="markAsComplete"></li>
-        </ul>
-        <div>
-            <input type="text" v-model="newTask" placeholder="Write the new task here">
+        <div class="paper-sheet">
+            <h1>Things to do today:</h1>
+            <ul>
+                <li v-for="task in toDoTasks" :key="task.text" :class="{ 'completed-task': task.done }">
+                    {{ task.text }} 
+                    <input type="checkbox" v-model="task.done">
+                    <span @click="deleteTask(index)"><i class="fa-solid fa-circle-xmark" style="color: #ff0000;"></i></span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="newTask-input-box">
+            <input type="text" v-model="newTask" @keyup.enter="addTask" placeholder="Write the new task here">
             <button @click="addTask">Add task to list</button>
         </div>
     </div>

@@ -1,0 +1,23 @@
+.completed-task {
+    text-decoration: line-through;
+}
+
+.paper-sheet {
+    background-image: url(https://img.freepik.com/free-vector/blank-white-notepaper-design_53876-118304.jpg);
+    object-fit: cover;
+    width: 400px;
+    margin: auto;
+    padding-bottom: 5px;
+}
+
+.newTask-input-box {
+    width: 400px;
+    margin: auto;
+}
+
+h1 {
+    padding-left: 65px;
+}
+ul {
+    padding-left: 90px;
+}
