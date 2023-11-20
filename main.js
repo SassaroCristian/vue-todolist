@@ -54,10 +54,15 @@ const toDoList = {
         },
 
         markAsComplete() {
-         this.toDoTasks.filter(task => task.done);
+            this.toDoTasks.forEach(task => {
+                if (!task.done) {
+                    task.done = true;
+                }
+            });
         },
 
-        deleteTask(index) {
+        deleteTask(task) {
+            const index = this.toDoTasks.indexOf(task);
             this.toDoTasks.splice(index, 1);
         }
 
